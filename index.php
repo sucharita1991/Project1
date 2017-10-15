@@ -33,7 +33,6 @@ class main {
             $page->post();
         }
     }
-
 }
 
 abstract class page {
@@ -77,46 +76,35 @@ class homepage extends page {
         session_start();
         if(isset($_POST['submit'])) {
 
-            //print_r($_FILES);
             $errorMsg = "";
             $target_dir = "Uploads/";
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-            //echo $_FILES["fileToUpload"]["name"];
             $uploadOk = 1;
             $csvFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             $csvFileName = pathinfo($target_file, PATHINFO_BASENAME);
-            //echo $csvFileName;
+            header('Location: index.php?page=tableDisplay&fileName='.$csvFileName);
 
-            //converting csv file to array
-            /*$uploadedfile = fopen("Uploads/".$csvFileName,"r");
-
-            while(! feof($uploadedfile))
-            {
-                print_r(fgetcsv($uploadedfile));
-            }
-
-            fclose($uploadedfile);*/
-
-// Check if file already exists
+            //Validation messages
+            // Check if file already exists
             if (file_exists($target_file)) {
                 $errorMsg .= "Sorry, file already exists.";
                 $uploadOk = 0;
             }
 
-// Check file size
+            // Check file size
             if ($_FILES["fileToUpload"]["size"] > 500000) {
                 $errorMsg .= "Sorry, your file is too large.";
                 $uploadOk = 0;
             }
-// Allow certain file formats
+            // Allow certain file formats
             if ($csvFileType != "csv") {
                 $errorMsg .= "Sorry, only CSV files are allowed.";
                 $uploadOk = 0;
             }
-// Check if $uploadOk is set to 0 by an error
+            // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
                 $errorMsg .= "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+            // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $errorMsg .= "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
@@ -126,13 +114,10 @@ class homepage extends page {
             }
             if ($errorMsg) {
                 //echo "<script type='text/javascript'>alert(\"$errorMsg\");</script>";
-                $_SESSION['static_message'] = $errorMsg;
-                header('Location: index.php?page=tableDisplay&fileName='.$csvFileName);
+                $_SESSION['validation_message'] = $errorMsg;
             }
-
         }
     }
-
 }
 
 
@@ -144,6 +129,5 @@ class stringFunctions {
         return strLen($text);
     }
 }
-
 
 ?>
