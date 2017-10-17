@@ -5,11 +5,12 @@ class homepage extends page {
 
     public function get()
     {
-        $form = '<form method="post" enctype="multipart/form-data">';
+        $form = '<form method="post" enctype="multipart/form-data"><center>';
+        $form .= '<img src="https://web.njit.edu/~bieber/home-images/njit-logo.jpg" height="200" width="400" id="njitLogo"><br><br>';
         $form .= '<input type="file" name="fileToUpload" id="fileToUpload">';
         $form .= '<input type="submit" value="Upload File" name="submit">';
-        $form .= '</form> ';
-        $this->html .= '<h1>Upload CSV File</h1>';
+        $form .= '</center></form> ';
+        $this->html .= '<center><h1>Upload CSV File</h1></center>';
         $this->html .= $form;
 
     }

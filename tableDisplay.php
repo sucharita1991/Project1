@@ -15,7 +15,7 @@ class tableDisplay extends page
         //converting csv file to array
         $data = array();
         $uploadedfile = fopen("Uploads/" . $csvFileName, "r"); //opening the file from the target directory
-        $formTable = '<h2>HTML Table Generated from CSV file: ' . $csvFileName . '</h2>';
+        $formTable = '<center><h2>HTML Table Generated from CSV file: ' . $csvFileName . '</h2>';
         $formTable .= '<table border="1">'; //generating table from the file
         $arraylength = 0;
         $countVar = 0;
@@ -38,7 +38,7 @@ class tableDisplay extends page
                 $formTable .= '</tr>';
             }
         }
-        $formTable .= '</table>';
+        $formTable .= '</table></center>';
         fclose($uploadedfile); //close the opened file
         stringFunctions::printThis($formTable);  //printing table at the end
     }

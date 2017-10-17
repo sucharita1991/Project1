@@ -7,7 +7,7 @@ abstract class page {
     {
         $this->html .= '<html>';
         $this->html .= '<link rel="stylesheet" href="styles.css">';
-        $this->html .= '<body>';
+        $this->html .= '<body background="http://uhqwallpapers.com/wp-content/uploads/2017/02/Light-Abstract-Computer-Background.jpg">';
     }
     public function __destruct()
     {
@@ -16,11 +16,11 @@ abstract class page {
     }
 
     public function get() {
-        echo 'default get message';
+        echo 'You are inside get method of parent class';
     }
 
     public function post() {
-        print_r($_POST);
+        echo 'You are inside post method of parent class';
     }
 }
 
