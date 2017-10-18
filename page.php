@@ -1,6 +1,6 @@
 <?php
 
-abstract class page {
+abstract class page { //abstract class for defining the backbone of the project
     protected $html;
 
     public function __construct()
@@ -12,9 +12,10 @@ abstract class page {
     public function __destruct()
     {
         $this->html .= '</body></html>';
-        stringFunctions::printThis($this->html);
+        stringFunctions::printThis($this->html); //string functions are autoloaded for the stringFunctions class
     }
 
+    //defination of the methods in the parent class to be implemented by the child classes
     public function get() {
         echo 'You are inside get method of parent class';
     }

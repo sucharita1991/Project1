@@ -1,10 +1,10 @@
 <?php
 
-//turn on debugging messages
+//Debugging messages
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-//Class to load classes it finds the file when the progrm starts to fail for calling a missing class
+//Autuloader class
 class Manage {
     public static function autoload($class) {
         //you can put any file name or directory here
@@ -14,7 +14,7 @@ class Manage {
 
 spl_autoload_register(array('Manage', 'autoload'));
 
-//instantiate the program object
+//instantiate the main object
 $obj = new main();
 
 class main {
@@ -22,7 +22,7 @@ class main {
     public function __construct()
     {
         $requestPageType = 'homepage';
-        if(isset($_REQUEST['page'])) {
+        if(isset($_REQUEST['page'])) { //checking if request parameter 'page' is set. If not, it will go to homepage by default
             $requestPageType = $_REQUEST['page'];
         }
         $page = new $requestPageType;
