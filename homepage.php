@@ -21,7 +21,7 @@ class homepage extends page {
 
             $errorMsg = "";
             $target_dir = "Uploads/";
-            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $target_file = str_replace(' ', '_', $target_dir . basename($_FILES["fileToUpload"]["name"]));  //replacing the spaces in filename with underscores
             $uploadOk = 1;
             $csvFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             $csvFileName = pathinfo($target_file, PATHINFO_BASENAME);
