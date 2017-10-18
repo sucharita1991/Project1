@@ -3,8 +3,9 @@
 //this class is for file validation messages
 class fileValidation{
 
-    public static function getValidationMsgs($target_file,$errorMsg,$fileExtType){
+    public static function getValidationMsgs($target_file,$csvFileType){
 
+        $errorMsg="";
         $uploadOk = 1; //counter to check if the upload was successful or not.
 
         // Check if file already exists
@@ -19,7 +20,7 @@ class fileValidation{
             $uploadOk = 0;
         }
         // Allow certain file formats
-        if ($fileExtType != "csv") {
+        if ($csvFileType != "csv") {
             $errorMsg .= "Sorry, only CSV files are allowed.";
             $uploadOk = 0;
         }
