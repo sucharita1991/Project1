@@ -5,7 +5,7 @@ class htmlTable{
 
     public static function genarateTableFromFile($uploadedfile,$csvFileName){
         $formTable = '<center><h2>HTML Table Generated from CSV file: ' . $csvFileName . '</h2>';
-        $formTable .= '<table border="1">'; //generating table from the file
+        $formTable .= '<table border="1" cellpadding="2" cellspacing="5">'; //generating table from the file
         $arraylength = 0;
         $countVar = 0;
         while (!feof($uploadedfile)) { //looping through the file till the end of file, one row at a time.
