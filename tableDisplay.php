@@ -21,9 +21,9 @@ class tableDisplay extends page
             $formTable = '<center><h2>HTML Table Generated from CSV file: ' . $csvFileName . '</h2>';
             $formTable .= '<table border="1" cellpadding="2" cellspacing="5">'; //generating table from the file
 
-            $fileArray = fileFunctions::fileRead($fileToOpen);
+            $fileArray = fileFunctions::fileRead($fileToOpen); //rreading the file
 
-            $formTable .= htmlTable :: genarateTableFromFile($fileArray);
+            $formTable .= htmlTable :: genarateTableFromFile($fileArray); // generating table
 
             $formTable .= '</table></center>';
 

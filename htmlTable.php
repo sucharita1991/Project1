@@ -6,7 +6,7 @@ class htmlTable{
     public static function genarateTableFromFile($arr){
         $csvTable = '';
         foreach($arr as $row => $innerArray){
-            $csvTable .= '';
+            $csvTable .= '<tr>';
             foreach($innerArray as $innerRow => $value){
                 if($row==0){
                     $csvTable .= '<th>' . $value . '</th>';
