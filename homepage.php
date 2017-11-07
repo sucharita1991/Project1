@@ -16,7 +16,7 @@ class homepage extends page {
     }
 
     public function post() {
-        session_start(); //start session for storing session variables
+
         if(isset($_POST['submit'])) { //checking if submit button was clicked
 
             $target_dir = "Uploads/"; //target directort where the .csv file will be uploaded
