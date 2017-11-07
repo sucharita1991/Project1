@@ -20,22 +20,13 @@ class tableDisplay extends page
 
             $formTable = '<center><h2>HTML Table Generated from CSV file: ' . $csvFileName . '</h2>';
             $formTable .= '<table border="1" cellpadding="2" cellspacing="5">'; //generating table from the file
-            $countVar = 0;
 
-            $uploadedfile = fileFunctions::openFile($fileToOpen);
+            $fileArray = fileFunctions::fileRead($fileToOpen);
 
-            while (!feof($uploadedfile)) { //looping through the file till the end of file, one row at a time.
+            $formTable .= htmlTable :: genarateTableFromFile($fileArray);
 
-                $countVar++; //variable for determining the row that is being read.
-
-                $fileArray = fileFunctions::fileRead($uploadedfile);
-
-                //generating a HTML Table from the Uploaded file
-                $formTable .= htmlTable :: genarateTableFromFile($fileArray,$countVar);
-            }
             $formTable .= '</table></center>';
 
-            fileFunctions::closeFile($uploadedfile); //close the opened file
             stringFunctions::printThis($formTable);  //printing table at the end
 
         }else{
@@ -47,15 +38,12 @@ class tableDisplay extends page
 class fileFunctions{
 
     public static function fileRead($fileToRead){
-        $fileArray = fgetcsv($fileToRead);
+        $uploadedFile = fopen($fileToRead, "r");
+        while (!feof($uploadedFile)) {
+            $fileArray[] = fgetcsv($uploadedFile);
+        }
+        fclose($uploadedFile);
         return $fileArray;
-    }
-    public static function openFile($fileToOpen){
-        $uploadedFile = fopen($fileToOpen, "r");;
-        return $uploadedFile;
-    }
-    public static function closeFile($fileToClose){
-        fclose($fileToClose);
     }
 }
 ?>

@@ -3,22 +3,19 @@
 //this class is for generating HTML table from a CSV file
 class htmlTable{
 
-    public static function genarateTableFromFile($data,$countVar){
-
-            if ($countVar == 1) { //checking the first row for generating table heading.
-                $csvTable = '<tr>';
-                foreach ($data as $values) {
-                    $csvTable .= '<th>' . $values . '</th>'; //generating table heading
+    public static function genarateTableFromFile($arr){
+        $csvTable = '';
+        foreach($arr as $row => $innerArray){
+            $csvTable .= '';
+            foreach($innerArray as $innerRow => $value){
+                if($row==0){
+                    $csvTable .= '<th>' . $value . '</th>';
+                }else {
+                    $csvTable .= '<td>' . $value . '</td>';
                 }
-                $csvTable .= '</tr>';
-            } else {    //checking for the rest of the table for generating table body/table data
-                $csvTable = '<tr>';
-                foreach ($data as $values) {
-                    $csvTable .= '<td>' . $values . '</td>'; //generating table heading
-                }
-
-                $csvTable .= '</tr>';
             }
+            $csvTable .= '</tr>';
+        }
 
         return $csvTable;
     }
